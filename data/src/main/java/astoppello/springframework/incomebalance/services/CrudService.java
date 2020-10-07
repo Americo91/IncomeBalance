@@ -1,6 +1,6 @@
-package services;
+package astoppello.springframework.incomebalance.services;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by @author stopp on 05/10/2020
@@ -10,7 +10,9 @@ public interface CrudService<T, ID> {
 
     T save(T object);
 
-    Set<T> findAll();
+    List<T> saveAll(List<T> list);
+
+    List<T> findAll();
 
     void delete(T object);
 

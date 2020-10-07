@@ -1,6 +1,6 @@
-package services;
+package astoppello.springframework.incomebalance.services;
 
-import model.BankBalance;
+import astoppello.springframework.incomebalance.model.BankBalance;
 
 /**
  * Created by @author stopp on 05/10/2020

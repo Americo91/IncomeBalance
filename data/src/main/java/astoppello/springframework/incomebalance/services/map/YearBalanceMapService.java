@@ -1,13 +1,15 @@
-package services.map;
+package astoppello.springframework.incomebalance.services.map;
 
-import model.YearBalance;
-import services.YearBalanceService;
+import astoppello.springframework.incomebalance.model.YearBalance;
+import astoppello.springframework.incomebalance.services.YearBalanceService;
+import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by @author stopp on 05/10/2020
  */
+@Service
 public class YearBalanceMapService  extends AbstractMapService<YearBalance, Long> implements YearBalanceService {
     @Override
     public YearBalance findById(Long id) {
@@ -20,7 +22,12 @@ public class YearBalanceMapService  extends AbstractMapService<YearBalance, Long
     }
 
     @Override
-    public Set<YearBalance> findAll() {
+    public List<YearBalance> saveAll(List<YearBalance> list) {
+        return null;
+    }
+
+    @Override
+    public List<YearBalance> findAll() {
         return super.findAll();
     }
 

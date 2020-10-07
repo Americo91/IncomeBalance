@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h2>Balances</h2>
+<table id="Year" class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 150px;">Year</th>
+        <th style="width: 200px;">Annual Salary</th>
+        <th style="width: 120px">TotIncomes</th>
+        <th style="width: 120px">TotExpenses</th>
+        <th style="width: 120px">Results</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="yearBalance" type="astoppello.springframework.incomebalance.model.YearBalance"*/-->
+    <tr th:each="yearBalance : ${yearBalances}">
+        <td th:text="${yearBalance.year}"/>
+        <td th:text="${yearBalance.annualSalary}"/>
+        <td th:text="${yearBalance.totIncomes}"/>
+        <td th:text="${yearBalance.totExpenses}"/>
+        <td th:text="${yearBalance.result}"/>
+    </tr>
+    </tbody>
+</table>
+<table id="Month" class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 120px">Month</th>
+        <th style="width: 120px">Salary</th>
+        <th style="width: 120px">TotIncomes</th>
+        <th style="width: 120px">TotExpenses</th>
+        <th style="width: 120px">Results</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="monthBalace : ${monthBalances}">
+        <td th:text="${monthBalace.month}"/>
+        <td th:text="${monthBalace.salary}"/>
+        <td th:text="${monthBalace.totIncomes}"/>
+        <td th:text="${monthBalace.totExpenses}"/>
+        <td th:text="${monthBalace.result}"/>
+    </tr>
+    </tbody>
+</table>
+<table id="BankAccount" class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 120px">Id</th>
+        <th style="width: 120px">Bank name</th>
+        <th style="width: 120px">totIncomes</th>
+        <th style="width: 120px">totExpenses</th>
+        <th style="width: 120px">Results</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bankAccount : ${bankBalances}">
+        <td th:text="${bankAccount.id}"/>
+        <td th:text="${bankAccount.bank}"/>
+        <td th:text="${bankAccount.totIncomes}"/>
+        <td th:text="${bankAccount.totExpenses}"/>
+        <td th:text="${bankAccount.result}"/>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

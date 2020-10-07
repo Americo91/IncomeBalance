@@ -1,25 +1,34 @@
-package services.map;
+package astoppello.springframework.incomebalance.services.map;
 
-import model.BaseEntity;
+import astoppello.springframework.incomebalance.model.BaseEntity;
+import astoppello.springframework.incomebalance.services.CrudService;
 
 import java.util.*;
 
 /**
  * Created by @author stopp on 05/10/2020
  */
-public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> implements CrudService<T, ID> {
 
     protected Map<Long, T> map = new HashMap<>();
 
-    Set<T> findAll() {
-        return new HashSet<>(map.values());
+    public List<T> findAll() {
+        return new LinkedList<>(map.values());
     }
 
-    T findById(Long id) {
+    public T findById(Long id) {
         return map.get(id);
     }
 
-    T save(T object){
+    public List<T> saveAll(List<T> list) {
+        List<T> returnedList = new LinkedList<>();
+        for(T t : list) {
+            returnedList.add(save(t));
+        }
+        return returnedList;
+    }
+
+    public T save(T object){
         if(object != null) {
             if(object.getId() == null) {
                 object.setId(getNextId());
@@ -31,11 +40,11 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
         return object;
     }
 
-    void deleteById(ID id) {
+    public void deleteById(ID id) {
         map.remove(id);
     }
 
-    void delete(T object) {
+    public void delete(T object) {
         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
     }
 

@@ -1,13 +1,15 @@
-package services.map;
+package astoppello.springframework.incomebalance.services.map;
 
-import model.BankBalance;
-import services.BankBalanceService;
+import astoppello.springframework.incomebalance.model.BankBalance;
+import astoppello.springframework.incomebalance.services.BankBalanceService;
+import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by @author stopp on 05/10/2020
  */
+@Service
 public class BankBalanceMapService extends AbstractMapService<BankBalance, Long> implements BankBalanceService {
     @Override
     public BankBalance findById(Long id) {
@@ -20,7 +22,7 @@ public class BankBalanceMapService extends AbstractMapService<BankBalance, Long>
     }
 
     @Override
-    public Set<BankBalance> findAll() {
+    public List<BankBalance> findAll() {
         return super.findAll();
     }
 
