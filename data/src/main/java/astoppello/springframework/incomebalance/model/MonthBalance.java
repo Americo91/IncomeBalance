@@ -1,9 +1,6 @@
 package astoppello.springframework.incomebalance.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Month;
@@ -18,6 +15,7 @@ import java.util.Locale;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class MonthBalance extends BaseEntity {
     private String month_name;
     private Month month;
@@ -30,7 +28,9 @@ public class MonthBalance extends BaseEntity {
                         BigDecimal result, List<BankBalance> bankBalanceList) {
         super(id, totIncomes, totExpenses, result);
         this.month = month;
-        this.month_name = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+        if(month != null) {
+            this.month_name = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+        }
         this.salary = salary;
         if (bankBalanceList != null) {
             this.bankBalanceList = bankBalanceList;

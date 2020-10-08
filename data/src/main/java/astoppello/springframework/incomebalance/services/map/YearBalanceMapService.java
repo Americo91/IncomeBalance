@@ -23,7 +23,7 @@ public class YearBalanceMapService  extends AbstractMapService<YearBalance, Long
 
     @Override
     public List<YearBalance> saveAll(List<YearBalance> list) {
-        return null;
+        return super.saveAll(list);
     }
 
     @Override
