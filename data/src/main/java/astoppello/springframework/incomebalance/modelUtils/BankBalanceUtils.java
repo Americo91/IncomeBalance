@@ -10,6 +10,9 @@ import java.math.BigDecimal;
 public class BankBalanceUtils {
 
     public static BigDecimal computeResult(BankBalance bankBalance) {
+        if (bankBalance.getTotIncomes() == null || bankBalance.getTotExpenses() == null) {
+            return new BigDecimal("0.0");
+        }
         return bankBalance.getTotIncomes().subtract(bankBalance.getTotExpenses());
     }
 }
