@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <Title>Show Year Balance</Title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
+</head>
+<body>
+    <!--/*@thymesVar id="yearBalance" type="astoppello.springframework.incomebalance.model.YearBalance"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+                    <h1 class="panel-title" th:text="Year +' '+ ${yearBalance.year}">Year</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h6>Tot Income: </h6>
+                        </div>
+                        <div class="col-md-5" th:bgcolor="green">
+                            <h6 th:text="${yearBalance.totIncomes}">500</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h6>Tot Expenses: </h6>
+                        </div>
+                        <div class="col-md-5">
+                            <h6 th:text="${yearBalance.totExpenses}">400</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h6>Result: </h6>
+                        </div>
+                        <div class="col-md-5">
+                            <h6 th:text="${yearBalance.result}">1000</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h6>Tot Salary: </h6>
+                        </div>
+                        <div class="col-md-5">
+                            <h6 th:text="${yearBalance.annualSalary}">100</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-secondary">
+                    <h1 class="panel-title">Months</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 120px">Month</th>
+                                        <th style="width: 120px">TotIncomes</th>
+                                        <th style="width: 120px">TotExpenses</th>
+                                        <th style="width: 120px">Results</th>
+                                        <th style="width: 120px">Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="monthBalance : ${yearBalance.getMonthSalaryList()}">
+                                        <td>
+                                            <a th:href="@{/years/__${yearBalance.id}__/months/__${monthBalance.id}__}"
+                                               th:text="${monthBalance.month}" style="width: 120px">Mese</a>
+                                        </td>
+                                        <td th:text="${monthBalance.totIncomes}" style="width: 120px">0</td>
+                                        <td th:text="${monthBalance.totExpenses}" style="width: 120px">0</td>
+                                        <td th:text="${monthBalance.result}" style="width: 120px">0</td>
+                                        <td th:text="${monthBalance.salary}" style="width: 120px">0</td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
