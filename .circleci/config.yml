@@ -44,5 +44,5 @@ jobs:
       - run:
           name: Send to CodeCov
           command: bash <(curl -s https://codecov.io/bash)
-          - store_artifacts:
+      - store_artifacts:
               path: target
